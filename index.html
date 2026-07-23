@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cecilia Hernández · Piano</title>
+<meta name="description" content="Repertorio de piano de Cecilia Hernández">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:        #FBF7F2;
+    --bg-alt:    #F3ECE3;
+    --ink:       #2E2A24;
+    --ink-soft:  #7A7167;
+    --accent:    #B8677A;
+    --accent-2:  #7C8B7F;
+    --accent-soft: #EBD3D8;
+    --line:      #DFD3C4;
+    --white:     #FFFFFF;
+    --radius:    2px;
+  }
+
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Jost', sans-serif;
+    font-weight:400;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  a{ color:inherit; }
+
+  .eyebrow{
+    font-family:'Jost', sans-serif;
+    font-size:0.72rem;
+    letter-spacing:0.22em;
+    text-transform:uppercase;
+    color:var(--accent-2);
+    font-weight:500;
+  }
+
+  /* ---------- header / hero ---------- */
+  header.hero{
+    max-width:900px;
+    margin:0 auto;
+    padding:5.5rem 1.5rem 3.5rem;
+    text-align:center;
+  }
+  header.hero .eyebrow{ margin-bottom:1.4rem; }
+
+  h1.name{
+    font-family:'Cormorant Garamond', serif;
+    font-weight:500;
+    font-size:clamp(2.8rem, 7vw, 5rem);
+    line-height:1.02;
+    margin:0;
+    letter-spacing:0.01em;
+  }
+  h1.name em{
+    font-style:italic;
+    font-weight:500;
+    color:var(--accent);
+  }
+
+  p.role{
+    margin:1.1rem 0 0;
+    font-size:1.05rem;
+    color:var(--ink-soft);
+    letter-spacing:0.02em;
+  }
+
+  p.teacher{
+    margin:0.35rem 0 0;
+    font-size:0.92rem;
+    color:var(--ink-soft);
+    letter-spacing:0.02em;
+  }
+  p.teacher strong{
+    font-weight:500;
+    color:var(--ink);
+  }
+
+  /* ---------- piano illustration ---------- */
+  .piano-wrap{
+    margin:3.2rem auto 0;
+    max-width:560px;
+    padding:0 1.5rem;
+  }
+  .piano-illustration{
+    width:100%;
+    height:auto;
+    display:block;
+    filter:drop-shadow(0 18px 30px -18px rgba(46,42,36,0.45));
+  }
+  .piano-illustration .lid{ fill:var(--ink); opacity:0.92; }
+  .piano-illustration .fallboard{ fill:var(--bg-alt); stroke:var(--line); stroke-width:1; }
+  .piano-illustration .wkey{ fill:var(--white); stroke:var(--line); stroke-width:1; }
+  .piano-illustration .bkey{ fill:var(--ink); }
+  .piano-illustration .wkey:hover{ fill:var(--accent-soft); }
+
+  .hero-divider{ margin-top:3rem; }
+
+  /* ---------- section shell ---------- */
+  section{
+    max-width:900px;
+    margin:0 auto;
+    padding:4rem 1.5rem;
+  }
+  section > .eyebrow{ display:block; text-align:center; margin-bottom:0.6rem; }
+
+  h2.section-title{
+    font-family:'Cormorant Garamond', serif;
+    font-style:italic;
+    font-weight:500;
+    font-size:clamp(1.9rem, 4vw, 2.6rem);
+    text-align:center;
+    margin:0 0 3rem;
+    color:var(--ink);
+  }
+
+  /* ---------- repertoire grid ---------- */
+  .repertoire{
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+    gap:1.4rem;
+  }
+  @media (max-width:640px){
+    .repertoire{ grid-template-columns:1fr; }
+  }
+
+  .piece{
+    background:var(--white);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:1.9rem 1.8rem 1.7rem;
+    text-align:left;
+    display:flex;
+    flex-direction:column;
+    gap:0.55rem;
+    transition:border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+  }
+  .piece:hover{
+    border-color:var(--accent);
+    transform:translateY(-2px);
+    box-shadow:0 10px 24px -18px rgba(46,42,36,0.35);
+  }
+
+  .piece .marking{
+    font-family:'Cormorant Garamond', serif;
+    font-style:italic;
+    font-size:0.98rem;
+    color:var(--accent);
+  }
+
+  .piece h3{
+    font-family:'Cormorant Garamond', serif;
+    font-weight:600;
+    font-size:1.5rem;
+    margin:0;
+    line-height:1.2;
+  }
+
+  .piece .composer{
+    font-size:0.86rem;
+    color:var(--ink-soft);
+    letter-spacing:0.02em;
+  }
+
+  .piece .meta{
+    font-size:0.78rem;
+    color:var(--ink-soft);
+    letter-spacing:0.05em;
+    margin-top:0.1rem;
+  }
+
+  .piece .open-btn{
+    margin-top:0.9rem;
+    align-self:flex-start;
+    display:inline-flex;
+    align-items:center;
+    gap:0.5rem;
+    background:none;
+    border:1px solid var(--ink);
+    color:var(--ink);
+    font-family:'Jost', sans-serif;
+    font-size:0.78rem;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    padding:0.55rem 1.1rem;
+    border-radius:var(--radius);
+    cursor:pointer;
+    transition:background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+  }
+  .piece .open-btn:hover,
+  .piece .open-btn:focus-visible{
+    background:var(--accent);
+    border-color:var(--accent);
+    color:var(--white);
+  }
+  .piece .open-btn:focus-visible{ outline:2px solid var(--accent-2); outline-offset:2px; }
+
+  /* ---------- footer ---------- */
+  footer{
+    text-align:center;
+    padding:3rem 1.5rem 4rem;
+    color:var(--ink-soft);
+    font-size:0.8rem;
+    letter-spacing:0.04em;
+  }
+
+  /* ---------- modal / pdf viewer ---------- */
+  .modal-overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(46,42,36,0.55);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:2.2rem 1rem;
+    z-index:100;
+  }
+  .modal-overlay.open{ display:flex; }
+
+  .modal{
+    background:var(--bg);
+    width:100%;
+    max-width:920px;
+    height:100%;
+    max-height:88vh;
+    border-radius:var(--radius);
+    display:flex;
+    flex-direction:column;
+    overflow:hidden;
+    box-shadow:0 30px 60px -20px rgba(0,0,0,0.4);
+  }
+
+  .modal-bar{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0.9rem 1.3rem;
+    border-bottom:1px solid var(--line);
+    background:var(--white);
+    gap:1rem;
+  }
+  .modal-bar .title{
+    font-family:'Cormorant Garamond', serif;
+    font-style:italic;
+    font-size:1.15rem;
+  }
+  .modal-bar .actions{ display:flex; align-items:center; gap:1rem; }
+  .modal-bar a.download{
+    font-size:0.78rem;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--accent-2);
+    text-decoration:none;
+    border-bottom:1px solid transparent;
+  }
+  .modal-bar a.download:hover{ border-color:var(--accent-2); }
+
+  .modal-bar button.close{
+    background:none;
+    border:none;
+    font-size:1.4rem;
+    line-height:1;
+    color:var(--ink-soft);
+    cursor:pointer;
+    padding:0.2rem 0.4rem;
+  }
+  .modal-bar button.close:hover{ color:var(--ink); }
+  .modal-bar button.close:focus-visible{ outline:2px solid var(--accent-2); outline-offset:2px; }
+
+  .modal iframe{
+    flex:1;
+    width:100%;
+    border:none;
+    background:var(--white);
+  }
+
+  @media (prefers-reduced-motion:reduce){
+    .piece{ transition:none; }
+    html{ scroll-behavior:auto; }
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <span class="eyebrow">Piano · Repertorio</span>
+  <h1 class="name">Cecilia <em>Hernández</em></h1>
+  <p class="role">Estudiante de piano</p>
+  <p class="teacher">Profesor: <strong>Rodrigo Zamora</strong></p>
+
+  <div class="piano-wrap">
+    <svg class="piano-illustration" viewBox="0 0 600 190" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Ilustración de un teclado de piano">
+      <rect class="lid" x="0" y="0" width="600" height="12" rx="3"/>
+      <rect class="fallboard" x="0" y="8" width="600" height="8"/>
+      <rect x="0" y="10" width="42.86" height="150" rx="2" class="wkey"/>
+      <rect x="42.86" y="10" width="42.86" height="150" rx="2" class="wkey"/>
+      <rect x="85.71" y="10" width="42.86" height="150" rx="2" class="wkey"/>
+      <rect x="128.57" y="10" width="42.86" height="150" rx="2" class="wkey"/>
+      <rect x="171.43" y="10" width="42.86" height="150" rx="2" class="wkey"/>
+      <rect x="214.29" y="10" width="42.86" height="150" rx="2" class="wkey"/>
+      <rect x="257.14" y="10" width="42.86" height="150" rx="2" class="wkey"/>
+      <rect x="300.00" y="10" width="42.86" height="150" rx="2" class="wkey"/>
+      <rect x="342.86" y="10" width="42.86" height="150" rx="2" class="wkey"/>
+      <rect x="385.71" y="10" width="42.86" height="150" rx="2" class="wkey"/>
+      <rect x="428.57" y="10" width="42.86" height="150" rx="2" class="wkey"/>
+      <rect x="471.43" y="10" width="42.86" height="150" rx="2" class="wkey"/>
+      <rect x="514.29" y="10" width="42.86" height="150" rx="2" class="wkey"/>
+      <rect x="557.14" y="10" width="42.86" height="150" rx="2" class="wkey"/>
+      <rect x="30.43" y="10" width="24.86" height="93.00" rx="1.5" class="bkey"/>
+      <rect x="73.29" y="10" width="24.86" height="93.00" rx="1.5" class="bkey"/>
+      <rect x="159.00" y="10" width="24.86" height="93.00" rx="1.5" class="bkey"/>
+      <rect x="201.86" y="10" width="24.86" height="93.00" rx="1.5" class="bkey"/>
+      <rect x="244.71" y="10" width="24.86" height="93.00" rx="1.5" class="bkey"/>
+      <rect x="330.43" y="10" width="24.86" height="93.00" rx="1.5" class="bkey"/>
+      <rect x="373.29" y="10" width="24.86" height="93.00" rx="1.5" class="bkey"/>
+      <rect x="459.00" y="10" width="24.86" height="93.00" rx="1.5" class="bkey"/>
+      <rect x="501.86" y="10" width="24.86" height="93.00" rx="1.5" class="bkey"/>
+      <rect x="544.71" y="10" width="24.86" height="93.00" rx="1.5" class="bkey"/>
+    </svg>
+  </div>
+</header>
+
+<section id="repertorio">
+  <span class="eyebrow">Lo que estoy tocando</span>
+  <h2 class="section-title">Repertorio</h2>
+
+  <div class="repertoire">
+
+    <article class="piece">
+      <span class="marking">Lent et douloureux</span>
+      <h3>1ère Gymnopédie</h3>
+      <span class="composer">Erik Satie</span>
+      <span class="meta">Re mayor · 3/4</span>
+      <button class="open-btn" data-title="1ère Gymnopédie — Erik Satie" data-src="Satie_Gymnopedie1.pdf">Ver partitura</button>
+    </article>
+
+    <article class="piece">
+      <span class="marking">Kleines Präludium</span>
+      <h3>Preludio, BWV 999</h3>
+      <span class="composer">Johann Sebastian Bach</span>
+      <span class="meta">Do menor · 3/4</span>
+      <button class="open-btn" data-title="Preludio BWV 999 — J. S. Bach" data-src="Bach_preludioBWV999.pdf">Ver partitura</button>
+    </article>
+
+    <article class="piece">
+      <span class="marking">Menuet</span>
+      <h3>Minueto, BWV Anh. 116</h3>
+      <span class="composer">Cuaderno de Anna Magdalena Bach</span>
+      <span class="meta">Sol mayor · 3/4</span>
+      <button class="open-btn" data-title="Minueto BWV Anh. 116" data-src="Bach_Minueto116.pdf">Ver partitura</button>
+    </article>
+
+    <article class="piece">
+      <span class="marking">♩ = 80</span>
+      <h3>La La Land Theme</h3>
+      <span class="composer">Justin Hurwitz</span>
+      <span class="meta">La mayor · 3/4</span>
+      <button class="open-btn" data-title="La La Land Theme — Justin Hurwitz" data-src="Lalaland.pdf">Ver partitura</button>
+    </article>
+
+  </div>
+</section>
+
+<footer>
+  Clases de piano · Cecilia Hernández
+</footer>
+
+<!-- ---------- PDF modal ---------- -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-bar">
+      <span class="title" id="modalTitle">Partitura</span>
+      <div class="actions">
+        <a class="download" id="modalDownload" href="#" target="_blank" rel="noopener">Descargar PDF</a>
+        <button class="close" id="modalClose" aria-label="Cerrar">&times;</button>
+      </div>
+    </div>
+    <iframe id="modalFrame" src="" title="Visor de partitura"></iframe>
+  </div>
+</div>
+
+<script>
+  const overlay   = document.getElementById('modalOverlay');
+  const frame     = document.getElementById('modalFrame');
+  const titleEl   = document.getElementById('modalTitle');
+  const downloadEl= document.getElementById('modalDownload');
+  const closeBtn  = document.getElementById('modalClose');
+
+  document.querySelectorAll('.open-btn').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      const src   = btn.getAttribute('data-src');
+      const title = btn.getAttribute('data-title');
+      frame.src = src;
+      titleEl.textContent = title;
+      downloadEl.href = src;
+      overlay.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      closeBtn.focus();
+    });
+  });
+
+  function closeModal(){
+    overlay.classList.remove('open');
+    frame.src = '';
+    document.body.style.overflow = '';
+  }
+
+  closeBtn.addEventListener('click', closeModal);
+  overlay.addEventListener('click', (e)=>{ if(e.target === overlay) closeModal(); });
+  document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape' && overlay.classList.contains('open')) closeModal(); });
+</script>
+
+</body>
+</html>
