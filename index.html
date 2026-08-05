@@ -196,6 +196,7 @@
     padding:0.55rem 1.1rem;
     border-radius:var(--radius);
     cursor:pointer;
+    text-decoration:none;
     transition:background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
   }
   .piece .open-btn:hover,
@@ -205,6 +206,34 @@
     color:var(--white);
   }
   .piece .open-btn:focus-visible{ outline:2px solid var(--accent-2); outline-offset:2px; }
+  .piece .open-btn svg{ width:14px; height:14px; flex-shrink:0; }
+
+  /* ---------- técnica section (fondo alterno) ---------- */
+  #tecnica{
+    background:var(--bg-alt);
+    max-width:none;
+    padding:4rem 1.5rem;
+  }
+  #tecnica .inner{
+    max-width:900px;
+    margin:0 auto;
+  }
+  #tecnica .repertoire{
+    grid-template-columns:1fr;
+  }
+  #tecnica .piece{
+    flex-direction:row;
+    align-items:center;
+    justify-content:space-between;
+    gap:1.5rem;
+    flex-wrap:wrap;
+  }
+  #tecnica .piece .info{
+    display:flex;
+    flex-direction:column;
+    gap:0.55rem;
+  }
+  #tecnica .piece .open-btn{ margin-top:0; }
 
   /* ---------- footer ---------- */
   footer{
@@ -213,76 +242,6 @@
     color:var(--ink-soft);
     font-size:0.8rem;
     letter-spacing:0.04em;
-  }
-
-  /* ---------- modal / pdf viewer ---------- */
-  .modal-overlay{
-    position:fixed;
-    inset:0;
-    background:rgba(46,42,36,0.55);
-    display:none;
-    align-items:center;
-    justify-content:center;
-    padding:2.2rem 1rem;
-    z-index:100;
-  }
-  .modal-overlay.open{ display:flex; }
-
-  .modal{
-    background:var(--bg);
-    width:100%;
-    max-width:920px;
-    height:100%;
-    max-height:88vh;
-    border-radius:var(--radius);
-    display:flex;
-    flex-direction:column;
-    overflow:hidden;
-    box-shadow:0 30px 60px -20px rgba(0,0,0,0.4);
-  }
-
-  .modal-bar{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    padding:0.9rem 1.3rem;
-    border-bottom:1px solid var(--line);
-    background:var(--white);
-    gap:1rem;
-  }
-  .modal-bar .title{
-    font-family:'Cormorant Garamond', serif;
-    font-style:italic;
-    font-size:1.15rem;
-  }
-  .modal-bar .actions{ display:flex; align-items:center; gap:1rem; }
-  .modal-bar a.download{
-    font-size:0.78rem;
-    letter-spacing:0.08em;
-    text-transform:uppercase;
-    color:var(--accent-2);
-    text-decoration:none;
-    border-bottom:1px solid transparent;
-  }
-  .modal-bar a.download:hover{ border-color:var(--accent-2); }
-
-  .modal-bar button.close{
-    background:none;
-    border:none;
-    font-size:1.4rem;
-    line-height:1;
-    color:var(--ink-soft);
-    cursor:pointer;
-    padding:0.2rem 0.4rem;
-  }
-  .modal-bar button.close:hover{ color:var(--ink); }
-  .modal-bar button.close:focus-visible{ outline:2px solid var(--accent-2); outline-offset:2px; }
-
-  .modal iframe{
-    flex:1;
-    width:100%;
-    border:none;
-    background:var(--white);
   }
 
   @media (prefers-reduced-motion:reduce){
@@ -342,7 +301,10 @@
       <h3>1ère Gymnopédie</h3>
       <span class="composer">Erik Satie</span>
       <span class="meta">Re mayor · 3/4</span>
-      <button class="open-btn" data-title="1ère Gymnopédie — Erik Satie" data-src="Satie_Gymnopedie1.pdf">Ver partitura</button>
+      <a class="open-btn" href="Satie_Gymnopedie1.pdf" download>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Descargar partitura
+      </a>
     </article>
 
     <article class="piece">
@@ -350,7 +312,10 @@
       <h3>Preludio, BWV 999</h3>
       <span class="composer">Johann Sebastian Bach</span>
       <span class="meta">Do menor · 3/4</span>
-      <button class="open-btn" data-title="Preludio BWV 999 — J. S. Bach" data-src="Bach_preludioBWV999.pdf">Ver partitura</button>
+      <a class="open-btn" href="Bach_preludioBWV999.pdf" download>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Descargar partitura
+      </a>
     </article>
 
     <article class="piece">
@@ -358,7 +323,10 @@
       <h3>Minueto, BWV Anh. 116</h3>
       <span class="composer">Cuaderno de Anna Magdalena Bach</span>
       <span class="meta">Sol mayor · 3/4</span>
-      <button class="open-btn" data-title="Minueto BWV Anh. 116" data-src="Bach_Minueto116.pdf">Ver partitura</button>
+      <a class="open-btn" href="Bach_Minueto116.pdf" download>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Descargar partitura
+      </a>
     </article>
 
     <article class="piece">
@@ -366,60 +334,62 @@
       <h3>La La Land Theme</h3>
       <span class="composer">Justin Hurwitz</span>
       <span class="meta">La mayor · 3/4</span>
-      <button class="open-btn" data-title="La La Land Theme — Justin Hurwitz" data-src="Lalaland.pdf">Ver partitura</button>
+      <a class="open-btn" href="Lalaland.pdf" download>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Descargar partitura
+      </a>
     </article>
 
+    <article class="piece">
+      <span class="marking">Freely ♩ = 72</span>
+      <h3>Experience</h3>
+      <span class="composer">Ludovico Einaudi</span>
+      <span class="meta">La mayor · 4/4</span>
+      <a class="open-btn" href="Experience.pdf" download>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Descargar partitura
+      </a>
+    </article>
+
+    <article class="piece">
+      <span class="marking">Allargando ♩ = c.40</span>
+      <h3>Nuvole Bianche</h3>
+      <span class="composer">Ludovico Einaudi</span>
+      <span class="meta">Fa menor · 4/4 - 12/8</span>
+      <a class="open-btn" href="Nuvole.pdf" download>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Descargar partitura
+      </a>
+    </article>
+
+  </div>
+</section>
+
+<section id="tecnica">
+  <div class="inner">
+    <span class="eyebrow">Ejercicios diarios</span>
+    <h2 class="section-title">Técnica</h2>
+
+    <div class="repertoire">
+      <article class="piece">
+        <div class="info">
+          <span class="marking">Escalas mayores y menores melódicas</span>
+          <h3>El Pequeño Pischna</h3>
+          <span class="composer">48 ejercicios de técnica simétrica e invertida</span>
+          <span class="meta">Todas las tonalidades · Mano izquierda una octava más baja</span>
+        </div>
+        <a class="open-btn" href="Escalas1.pdf" download>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Descargar escalas
+        </a>
+      </article>
+    </div>
   </div>
 </section>
 
 <footer>
   Clases de piano · Cecilia Hernández
 </footer>
-
-<!-- ---------- PDF modal ---------- -->
-<div class="modal-overlay" id="modalOverlay">
-  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-    <div class="modal-bar">
-      <span class="title" id="modalTitle">Partitura</span>
-      <div class="actions">
-        <a class="download" id="modalDownload" href="#" target="_blank" rel="noopener">Descargar PDF</a>
-        <button class="close" id="modalClose" aria-label="Cerrar">&times;</button>
-      </div>
-    </div>
-    <iframe id="modalFrame" src="" title="Visor de partitura"></iframe>
-  </div>
-</div>
-
-<script>
-  const overlay   = document.getElementById('modalOverlay');
-  const frame     = document.getElementById('modalFrame');
-  const titleEl   = document.getElementById('modalTitle');
-  const downloadEl= document.getElementById('modalDownload');
-  const closeBtn  = document.getElementById('modalClose');
-
-  document.querySelectorAll('.open-btn').forEach(btn=>{
-    btn.addEventListener('click', ()=>{
-      const src   = btn.getAttribute('data-src');
-      const title = btn.getAttribute('data-title');
-      frame.src = src;
-      titleEl.textContent = title;
-      downloadEl.href = src;
-      overlay.classList.add('open');
-      document.body.style.overflow = 'hidden';
-      closeBtn.focus();
-    });
-  });
-
-  function closeModal(){
-    overlay.classList.remove('open');
-    frame.src = '';
-    document.body.style.overflow = '';
-  }
-
-  closeBtn.addEventListener('click', closeModal);
-  overlay.addEventListener('click', (e)=>{ if(e.target === overlay) closeModal(); });
-  document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape' && overlay.classList.contains('open')) closeModal(); });
-</script>
 
 </body>
 </html>
